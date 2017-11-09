@@ -11,6 +11,7 @@ public class ActionIntercptor extends AbstractInterceptor{
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		System.out.println("执行拦截器");
+		
 		//加载登陆成功后保存在session的用户信息
 		User loginUser = (User) ActionContext.getContext().getSession().get("loginUser");
 		
