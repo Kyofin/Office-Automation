@@ -1,0 +1,19 @@
+<!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.3//EN"
+  "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	
+	<field name="jobname">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="职位名不能为空" />
+		</field-validator>
+	</field>
+	<field name="remark">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="详细描述不能为空" />
+		</field-validator>
+	</field>
+
+</validators>

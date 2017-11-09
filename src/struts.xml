@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+		    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+		    "http://struts.apache.org/dtds/struts-2.5.dtd">
+  <struts>
+    <!-- 设置标签样式主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+  
+ 	<!-- 配置开启动态方法 -->
+  	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+  	<!-- 配置action类的访问路径uri以及转发地址	 -->
+  	<package name="gec"  extends="struts-default" >
+  		<!-- 定义拦截器 -->
+  		<interceptors>
+  			<!-- 注册自定义拦截器 -->
+  			<interceptor name="authority" class="com.gec.intercptor.ActionIntercptor"></interceptor>
+  			
+  			<!-- 组装拦截器栈 -->
+  			<interceptor-stack name="myInterceptor">
+  				<interceptor-ref name="defaultStack"/>
+  				<interceptor-ref name="authority"/>
+  			</interceptor-stack>
+  		
+  		
+  		</interceptors>
+  	
+  		<!-- 定义全局结果视图 -->
+  		<global-results>
+			<!-- 当返回login视图名时，转入/login.jsp页面 -->  
+		        <result name="login">/index.jsp</result>  
+		</global-results>
+  		
+  		<!-- 允许匹配所有方法 -->
+  		<global-allowed-methods>regex:.*</global-allowed-methods>
+  		
+  		<!-- 登录验证 -->
+  		<action name="dologin" class="com.gec.action.LoginAction" method="dologin">
+			<result name="success" type="redirectAction">QueryUser</result>
+			<result name="input" >/index.jsp</result>
+		</action>
+		
+		<!-- 注销登录 -->
+  		<action name="LoginOut" class="com.gec.action.LoginAction" method="doLogout">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 查询用户 -->
+		<action name="QueryUser" class="com.gec.action.UserAction" method="queryUser">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/user/queryUserPage.jsp</result>
+		</action>
+		
+		<!-- 删除用户 -->
+		<action name="deleteUser" class="com.gec.action.UserAction" method="deleteUser">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction">QueryUser</result>
+		</action>
+  		
+  		<!-- 添加用户 -->
+  		<action name="AddUser" class="com.gec.action.UserAction" method ="addUser">
+  			<interceptor-ref name="myInterceptor"/>
+  			<result name="success">/WEB-INF/page/user/addUserPage.jsp</result>
+  			<result name="input">/WEB-INF/page/user/addUserPage.jsp</result>
+  		</action>
+		
+		<!-- 打开添加用户界面 -->
+  		<action name="toAddUserPage" >
+  			<interceptor-ref name="myInterceptor"/>
+  			<result name="success">/WEB-INF/page/user/addUserPage.jsp</result>
+  		</action>
+  		
+  		<!-- 打开编辑用户界面 -->
+  		<action name="editorUser" class="com.gec.action.UserAction" method ="editorUser" >
+  			<interceptor-ref name="myInterceptor"/>
+  			<result name="success">/WEB-INF/page/user/editorUserPage.jsp</result>
+  		</action>
+  		
+  		<!-- 更新用户 -->
+  		<action name="updateUser" class="com.gec.action.UserAction" method ="updateUser" >
+  			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction">QueryUser</result>
+  		</action>	
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		<!-- 查询职业-->
+		<action name="queryJob" class="com.gec.action.JobAction" method="queryJob">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/job/queryJobPage.jsp</result>
+		</action>	
+		
+  		<!-- 添加职业-->
+		<action name="addJob" class="com.gec.action.JobAction" method="addJob">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/job/addJobPage.jsp</result>
+			<result name="input" >/WEB-INF/page/job/addJobPage.jsp</result>
+		</action>	
+			
+  		<!-- 打开添加职业界面-->
+		<action name="toaddjob" >
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/job/addJobPage.jsp</result>
+		</action>
+		
+		<!-- 删除职业-->
+		<action name="deleteJob" class="com.gec.action.JobAction" method="deleteJob">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction">queryJob</result>
+		</action>
+		
+		<!-- 打开编辑职业界面 -->
+  		<action name="editorJob" class="com.gec.action.JobAction" method ="editorJob" >
+  			<interceptor-ref name="myInterceptor"/>
+  			<result name="success">/WEB-INF/page/job/editorJobPage.jsp</result>
+  		</action>
+  		
+  		<!-- 更新职业(未完成) -->
+  		<action name="updateJob" class="com.gec.action.JobAction" method ="updateJob" >
+  			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction">queryJob</result>
+  		</action>
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		<!-- 查询部门-->
+		<action name="queryApart" class="com.gec.action.ApartAction" method="queryApart">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/apart/queryApartPage.jsp</result>
+		</action>
+		
+		<!-- 添加部门-->
+		<action name="addApart" class="com.gec.action.ApartAction" method="addApart">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/apart/addApartPage.jsp</result>
+			<result name="input" >/WEB-INF/page/apart/addApartPage.jsp</result>
+		</action>	
+			
+  		<!-- 打开添加部门界面-->
+		<action name="toaddapart" >
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/apart/addApartPage.jsp</result>
+		</action>	
+		
+		<!-- 删除部门-->
+		<action name="deleteApart" class="com.gec.action.ApartAction" method="deleteApart">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction">queryApart</result>
+		</action>	
+		
+		
+		
+		
+		
+		
+		<!-- 打开添加员工界面-->
+		<action name="toAddEmployeePage" class="com.gec.action.EmployeeAction" method="toAddEmployeePage">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/employee/addEmployeePage.jsp</result>
+		</action>
+		
+		<!-- 添加员工 -->
+		<action name="addEmployee" class="com.gec.action.EmployeeAction" method="addEmployee">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction">toAddEmployeePage</result>
+		</action>
+		
+		<!-- 查询员工-->
+		<action name="queryEmployee" class="com.gec.action.EmployeeAction" method="queryEmployee">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/employee/queryEmployeePage.jsp</result>
+		</action>
+			
+		<!-- 删除员工-->
+		<action name="deleteEmployee" class="com.gec.action.EmployeeAction" method="deleteEmployee">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction" >queryEmployee</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		 
+		 
+		 
+		 
+		 
+		<!-- 查询文档-->
+		<action name="queryFile" class="com.gec.action.FileAction" method="queryFile">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/file/queryFilePage.jsp</result>
+		</action>
+		
+		<!-- 删除文档-->
+		<action name="deleteFile" class="com.gec.action.FileAction" method="deleteFile">
+		<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="redirectAction" >queryFile</result>
+		</action>
+		
+		<!-- 打开添加文档界面-->
+		<action name="toAddFilePage" >
+		<interceptor-ref name="myInterceptor"/>
+			<result name="success" >/WEB-INF/page/file/uploadFilePage.jsp</result>
+		</action>
+		
+		
+		<!-- 文件上传 -->
+		<action name="uploadFile" class="com.gec.action.FileAction" method="uploadFile">
+			<interceptor-ref name="myInterceptor"/>
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传文件类型 -->
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+				<!-- 配置允许上传文件的大小 -->
+				<param name="maximumSize">200000</param>
+			</interceptor-ref>
+			<!-- 配置默认的拦截器 -->
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/WEB-INF/page/file/uploadFilePage.jsp</result>
+			<result name="input">/WEB-INF/page/file/uploadFilePage.jsp</result>
+		</action>
+		
+		
+		<!-- 文件下载  -->
+		<action name="downloadFile" class="com.gec.action.FileAction" method="downloadFile">
+			<interceptor-ref name="myInterceptor"/>
+			<result name="success" type="stream">
+				<!-- 指获取下载文件输入流的入口方法 -->
+				<param name="inputName">targetFile</param>
+				<!-- 指明下载文件名 -->
+				<param name="contentDisposition">attachment;filename=${fileName}</param>
+				<!-- 缓存buffer大小 -->
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		
+		
+			
+	</package>	
+	
+	<!-- 配置 身份证验证	 -->
+  	<package name="gecjson"  extends="json-default" >
+  		
+  		<!-- 允许匹配所有方法 -->
+  		<global-allowed-methods>regex:.*</global-allowed-methods>
+  		
+  		
+  		<action name="checkcard" class="com.gec.action.EmployeeAction" method="checkcard">
+  			
+			<!-- 智能将提交的josn数据赋值到该action对象的属性，并把该action属性重新包装成一条josn响应 -->
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="json" />
+			<result name="success" type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+			</result>
+		</action>
+	</package>	
+		
+				
+  	
+  	
+  	
+  	
+  </struts>

@@ -16,6 +16,10 @@ import com.gec.Interfdao.IUserDao;
 import com.gec.bean.User;
 import com.gec.db.DataSourceUtil;
 
+/**
+ * @author 公子
+ *
+ */
 public class UserDao extends BaseDao implements IUserDao {
 	
 	
@@ -224,6 +228,9 @@ public class UserDao extends BaseDao implements IUserDao {
 	}
 
 	
+	/**
+	 * 通过mybatis配置文件获取用户集合
+	 */
 	@Override
 	public List<User> getUserListByMybatis(String name,Integer status) 
 	{

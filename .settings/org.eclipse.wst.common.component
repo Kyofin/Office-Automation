@@ -2,7 +2,7 @@
     <wb-module deploy-name="oasystem">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="oasystem"/>
         <property name="java-output-path" value="/oasystem/WebContent/WEB-INF/classes"/>
+        <property name="context-root" value="oasystem2"/>
     </wb-module>
 </project-modules>

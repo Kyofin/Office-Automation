@@ -27,4 +27,9 @@ public class Job {
 	public void setMark(String mark) {
 		this.mark = mark;
 	}
+
+	@Override
+	public String toString() {
+		return "Job [id=" + id + ", name=" + name + ", mark=" + mark + "]";
+	}
 }

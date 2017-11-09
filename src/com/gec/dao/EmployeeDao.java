@@ -43,7 +43,7 @@ public class EmployeeDao extends BaseDao implements IEmployeeDao{
 			prstm.setString(10, employee.getEmail());
 			prstm.setString(11, employee.getSex());
 			prstm.setString(12, employee.getParty());
-			prstm.setDate(13, (java.sql.Date) employee.getBirthday());
+			prstm.setDate(13, new java.sql.Date(employee.getBirthday().getTime()) );
 			prstm.setString(14, employee.getRace());
 			prstm.setString(15, employee.getEducation());
 			prstm.setString(16, employee.getSpeciality());

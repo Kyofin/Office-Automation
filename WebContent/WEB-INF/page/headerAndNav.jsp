@@ -7,11 +7,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 巨幕-->
 	<h4 class="pull-right">
-		<a href="${pageContext.servletContext.contextPath }/LoginOut">注销</a>&nbsp;&nbsp;&nbsp;
+		<a class="btn btn-danger" href="${pageContext.servletContext.contextPath }/LoginOut">注销</a>&nbsp;&nbsp;&nbsp;
 	</h4>
-	<div class="jumbotron" style="background: lightgrey">
+	<div class="jumbotron" style="background: lightblue">
 		<div class="container">
-			<h4 class="pull-right">当前用户：${loginUser.username}</h4>
+			<h4 class="pull-right"><span class="glyphicon glyphicon-user" style="color: rgb(217, 140, 71);" >${loginUser.username}</span></h4>
 			<h3>人事管理系统</h3>
 			<h4 class="text-right"><%=new SimpleDateFormat("yyyy年MM月dd日HH时mm分").format(new Date())%></h4>
 		</div>
@@ -34,7 +34,7 @@
 							style="padding-left: 0;padding-right:0; ">
 
 							<a href="${pageContext.servletContext.contextPath }/QueryUser" class="list-group-item text-center"
-								style="border: none; font-size: 18px;">用户查询</a> <a href="${pageContext.servletContext.contextPath }/AddUser"
+								style="border: none; font-size: 18px;">用户查询</a> <a href="${pageContext.servletContext.contextPath }/toAddUserPage"
 								class="list-group-item text-center "
 								style="border: none; font-size: 18px">添加用户</a>
 
@@ -53,7 +53,7 @@
 						<div class="panel-body" style="padding-left: 0; padding-right: 0;">
 							<a href="${pageContext.servletContext.contextPath }/queryApart" class="list-group-item text-center"
 								style="border: none; font-size: 18px">部门查询</a> 
-								<a href="${pageContext.servletContext.contextPath }/addApart"
+								<a href="${pageContext.servletContext.contextPath }/toaddapart"
 								class="list-group-item text-center "
 								style="border: none; font-size: 18px">添加部门</a>
 						</div>
@@ -70,7 +70,7 @@
 					<div id="collapseThree" class="panel-collapse collapse">
 						<div class="panel-body" style="padding-left: 0; padding-right: 0;">
 							<a href="${pageContext.servletContext.contextPath }/queryJob" class="list-group-item text-center"
-								style="border: none; font-size: 18px">职位查询</a> <a href="${pageContext.servletContext.contextPath }/addJob"
+								style="border: none; font-size: 18px">职位查询</a> <a href="${pageContext.servletContext.contextPath }/toaddjob"
 								class="list-group-item text-center "
 								style="border: none; font-size: 18px">添加职位</a>
 						</div>
@@ -87,13 +87,13 @@
 					<div id="collapseFour" class="panel-collapse collapse">
 						<div class="panel-body" style="padding-left: 0; padding-right: 0;">
 							<a href="${pageContext.servletContext.contextPath }/queryEmployee" class="list-group-item text-center"
-								style="border: none; font-size: 18px">员工查询</a> <a href="${pageContext.servletContext.contextPath }/addEmployee"
+								style="border: none; font-size: 18px">员工查询</a> <a href="${pageContext.servletContext.contextPath }/toAddEmployeePage"
 								class="list-group-item text-center "
 								style="border: none; font-size: 18px">添加员工</a>
 						</div>
 					</div>
 				</div>
-				<div class="panel panel-default">
+			<!-- 	<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
@@ -106,7 +106,7 @@
 							dd
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
@@ -118,7 +118,7 @@
 					<div id="collapseSix" class="panel-collapse collapse">
 						<div class="panel-body" style="padding-left: 0; padding-right: 0;">
 							<a href="${pageContext.servletContext.contextPath }/queryFile" class="list-group-item text-center"
-								style="border: none; font-size: 18px">文档查询</a> <a href="${pageContext.servletContext.contextPath }/addFile"
+								style="border: none; font-size: 18px">文档查询</a> <a href="${pageContext.servletContext.contextPath }/toAddFilePage"
 								class="list-group-item text-center "
 								style="border: none; font-size: 18px">上传文档</a>	
 						</div>

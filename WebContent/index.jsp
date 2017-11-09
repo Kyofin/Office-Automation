@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath }/resources/css/normalize.css">
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath }/resources/css/normalize.css">
 
 <style type="text/css">
 .btn {
@@ -199,22 +200,35 @@ input:focus {
 	box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px
 		rgba(255, 255, 255, 0.2);
 }
+
+.error {
+	color: red;
+	font-weight: bold;
+}
 </style>
 </head>
 
 
 <body>
 
-
+	<%@taglib uri="/struts-tags" prefix="s"%>
 	<div class="login">
 		<h1>人事管理系统</h1>
-		<form method="post"
+
+		<%-- 	<form method="post"
 			action="${pageContext.servletContext.contextPath }/dologin">
 			<input type="text" placeholder="用户名" name="loginName"> <input
-				type="password"  placeholder="密码" name="password">
+				type="password" placeholder="密码" name="password">
 			<button type="submit" class="btn btn-primary btn-block btn-large">登录</button>
-		</form>
+		</form> --%>
+		<s:form method="post" action="dologin">
+			<s:fielderror fieldName="loginName" cssClass="error" />
+			<s:textfield name="loginName" placeholder="用户名" />
+			<s:fielderror fieldName="password" cssClass="error" />
+			<s:password name="password" placeholder="密码" />
+			<s:submit value="登录" class="btn btn-primary btn-block btn-large" />
+		</s:form>
 	</div>
-
+	<s:debug></s:debug>
 </body>
 </html>
