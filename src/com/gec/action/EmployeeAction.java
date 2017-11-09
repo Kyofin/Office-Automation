@@ -218,7 +218,7 @@ public class EmployeeAction extends ActionSupport
 	
 	
 	/**
-	 * 验证身份证
+	 * 验证身份证(ajax发送json异步请求，以json响应)
 	 * @return
 	 */
 	public String checkcard()
